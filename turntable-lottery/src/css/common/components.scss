@@ -1,0 +1,81 @@
+// 阴影设置
+@mixin box-shadow($direction: 'bottom', $color:#f4f4f5, $offset:2px) {
+  @if ($direction == 'all') {
+    box-shadow:0 0 $offset 0 $color;
+  } @else if ($direction == 'top') {
+    box-shadow:0 $offset*(-1) $offset 0 $color;
+  } @else if ($direction == 'bottom') {
+    box-shadow:0 $offset $offset 0 $color;
+  } @else if ($direction == 'left') {
+    box-shadow:$offset*(-1) 0 $offset 0 $color;
+  } @else if ($direction == 'right') {
+    box-shadow:$offset 0 $offset 0 $color;
+  }
+}
+// 多行溢出显示
+%maxLineHidden{ overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-box-orient:vertical; }
+@mixin maxLineHidden($number: 3) {
+  @extend %maxLineHidden;
+  -webkit-line-clamp:$number;
+}
+// 边框设置
+@mixin border($direction: 'all', $color:#efefef, $size:1px, $type:'solid') {
+  @if ($direction == 'all') {
+    border:$size $type $color;
+  } @else if ($direction == 'T&B') {
+    border-top:$size $type $color;
+    border-bottom:$size $type $color;
+  } @else if ($direction == 'L&R') {
+    border-left:$size $type $color;
+    border-right:$size $type $color;
+  } @else {
+    border-#{$direction}:1px solid $color;
+  }
+}
+// 圆角 
+@mixin border-radius($direction: 'all', $size: 15px) {
+  @if ($direction == 'all') {
+    border-radius:$size;
+  } @else if ($direction == 'T&L') {
+    border-top-left-radius: $size;
+  } @else if ($direction == 'T&R') {
+    border-top-right-radius: $size;
+  } @else if ($direction == 'B&L') {
+    border-bottom-left-radius: $size;
+  } @else if ($direction == 'B&R') {
+    border-bottom-right-radius: $size;
+  } @else if ($direction == 'top') {
+    border-top-left-radius: $size;
+    border-top-right-radius: $size;
+  } @else if ($direction == 'bottom') {
+    border-bottom-left-radius: $size;
+    border-bottom-right-radius: $size;
+  }
+}
+//生成三角形
+%triangle{width:0;height:0;overflow:hidden;}
+@mixin triangle($direction: 'bottom', $width:5px, $color:#ccc){
+  @extend %triangle;
+  border-width: $width;
+  @if($direction == "top"){
+    border-color:  transparent transparent $color transparent;
+    border-style:  dashed dashed solid dashed;
+  }@else if($direction == "bottom"){
+    border-color: $color transparent transparent transparent;
+    border-style: solid dashed dashed dashed;
+  }@else if($direction == "left"){
+    border-color: transparent $color transparent transparent;
+    border-style: dashed dashed solid dashed;
+  }@else{
+    border-color: transparent transparent transparent $color;
+    border-style: dashed dashed dashed solid;
+  }   
+}
+
+@mixin setColorForInput($color) {
+  color:$color;
+  &::-webkit-input-placeholder{color:$color;}
+  &::-moz-placeholder{color:$color;}
+  &:-moz-placeholder{color:$color;}
+  &:-ms-input-placeholder{color:$color;}
+}

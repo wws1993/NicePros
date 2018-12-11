@@ -1,0 +1,136 @@
+/* 2、 预样式*/
+html, body {
+  width: 100vw;
+  font-size: .26rem
+}
+
+.hide {
+  display: none
+}
+
+.fix {
+  position: fixed;
+  top: 0;
+  width: 100%
+}
+
+.afters::after {
+  content: '';
+  display: block;
+  clear: both
+}
+
+// 弹性布局全家桶 => 居中
+.warp-flex {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  align-content: center
+}
+
+.flex-x-spa {
+  justify-content: space-around
+}
+
+/*水平垂直居中*/
+.vjc-vac {
+  display: -webkit-flex;
+  justify-content: center; /*子元素水平居中*/
+  align-items: center; /*子元素垂直居中*/
+}
+
+.vjc {
+  display: -webkit-flex;
+  justify-content: center; /*子元素水平居中*/
+}
+
+.vac {
+  display: -webkit-flex;
+  align-items: center; /*子元素垂直居中*/
+}
+
+/* 单行文字溢出虚点显示*/
+.ell {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+// 消灭高德logo
+.amap-logo {
+  display: none;
+}
+
+// $.iBox
+.ibox-box {
+  width: 36%;
+  height: 18%;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: fixed;
+  top: 30vh;
+  left: 32%;
+  z-index: 999999;
+  background: rgba(0, 0, 0, .6);
+  color: #fff;
+  padding: .32rem;
+  box-sizing: border-box;
+  text-align: center;
+  border-radius: .1rem;
+}
+
+.ibox-mask {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999999;
+}
+
+//公共一些类
+.bgfff {
+  background: #fff;
+}
+
+.pdl15 {
+  padding-left: 15px;
+}
+
+.cus-label {
+  display: inline-block
+}
+
+.cus-radio {
+  display: none
+}
+
+.cus-radioInput {
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 100%;
+  display: inline-block;
+  height: 12px;
+  margin-right: 5px;
+  margin-top: -1px;
+  vertical-align: middle;
+  width: 12px;
+  line-height: 1
+}
+
+.cus-radio:checked + .cus-radioInput:after {
+  background-color: #57ad68;
+  border-radius: 100%;
+  content: "";
+  display: inline-block;
+  height: 8px;
+  margin: 2px;
+  width: 8px
+}
+
+.cus-checkbox.cus-radioInput, .cus-radio:checked + .cus-checkbox.cus-radioInput:after {
+  border-radius: 0
+}

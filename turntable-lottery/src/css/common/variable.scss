@@ -1,0 +1,78 @@
+//全局变量
+$config: (
+  font: ( 12, 14, 16, 20, 32, 48 ),
+  mp: ( 5, 10, 15, 20, 30),
+  direction: (
+    't': 'top',
+    'l': 'left',
+    'b': 'bottom',
+    'r': 'right',
+    'all': 'all',
+    'x': 'x',
+    'y': 'y'
+  ),
+  outputColorOptions: (         //输出到css 用于html中特殊使用
+    "success":#19be6b,
+    "warning":#ff9900,
+    "error":#ed3f14,
+    "content":#495060,
+    "subColor":#80848f,
+    "mainIcon": #ff733b,        // 主题色系
+    "_lightpink": #fb6f5b,
+    "_white": #fff,
+    "border": #f4f4f5,
+    "999": #999
+  ),
+  color: (
+    "_white": #fff,
+    "darkBlue": #09C,
+    "dark": #293038,
+    "scrollThumb": #495060,
+    "primary": #2d8cf0,
+    "info": #2d8cf0,
+    "lightDefault":#adcbea,
+    "darkDefault":#2b85e4,
+    "success":#19be6b,
+    "warning":#ff9900,
+    "error":#ed3f14,
+    "cancel":#fa6a6a,
+    "end":#f37954,
+    "refund":#4f9e94,
+    "title": #1c2438,
+    "border": #dddee1,
+    "content":#495060,
+    "subColor":#80848f,
+    "disable":#bbbec4,
+    "divider":#e9eaec,
+    "default":#f8f8f9,
+    "f9": #f9f9f9,
+    "main": #ffd100,
+    "lightMain": #ffe988,
+    "f8": #f8f8f8,
+    "_pink": #f62f71,
+    "mainIcon": #ff7e4b,        // 主题色系
+    "_lightpink": #fb6f5b,
+    "_violet": #844df6,
+    "_lightViolet": #bc65fc,
+    "mark6": rgba(0, 0, 0, .6),
+    "mark8": rgba(0, 0, 0, .8),
+    "sendBtn":#f3bc69
+  )
+);
+
+// getColor
+@function getColor($str) {
+  $lib: map-get($map: $config, $key: color);
+  $outpur: map-get($map: $lib, $key: $str);
+  @return $outpur;
+};
+
+@function getfs($num) {
+  $lib: map-get($map: $config, $key: font);
+  @return nth($lib, $num);
+};
+
+@function getmp($num) {
+  $lib: map-get($map: $config, $key: mp);
+  @return nth($lib, $num);
+};

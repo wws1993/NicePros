@@ -1,0 +1,31 @@
+/**
+ *@author wws<15123090305@163.com>
+ *@time 2018.06.20
+*/
+@charset "utf-8";
+@import './compatible';
+@import './variable';
+@import './class';
+@import './components';
+@import './scss_loader';
+
+.tc {text-align: center}
+.fb {font-weight: 600}
+
+body {background: getColor(f9);}
+// 引入字体图标
+@font-face {
+  font-family: 'webfont';
+  font-size: getfs(2)+px;
+  color: getColor(dark);
+  src: url(https://cdn.bootcss.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0);
+}
+
+// 活跃色
+[active], .technical {color: getColor(mainIcon)}
+
+[arrow]::after {
+  content: "\f105";
+  font-family: webfont;
+  margin-left: 5px
+}

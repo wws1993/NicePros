@@ -1,0 +1,37 @@
+/* 1、通用样式配置 */
+input[type=button], input[type=submit], input[type=file], button { cursor:pointer; -webkit-appearance:none;appearance: none; }
+input{background:none;border:none;border-radius:0}
+img{resize:none}
+body,html,button,div,section,ul,ol,li,p,i,code,em,span,video,audio,img,h1,h2,h3,h4,hr{
+  cursor:pointer;padding:0;margin:0;
+  /* //长时间按住页面出现闪退 */
+  -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+  -webkit-text-size-adjust: none;
+  /* //禁止复制、选中文本 */
+  -webkit-touch-callout:none;
+  -moz-touch-callout:none;
+  -ms-touch-callout:none;
+  -o-touch-callout:none;
+  touch-callout:none;
+  /* //Retina屏的1px边框 */
+  border-width:thin;
+  /* //设置内嵌的元素在3D 空间如何呈现：保留3D / */
+  /* // -webkit-transform-style:preserve-3d; */
+  /* //设置进行转换的元素的背面在面对用户时是否可见：隐藏 /  */
+  -webkit-backface-visibility:hidden;
+  /* // 某些Android手机圆角失效 */
+  background-clip:padding-box;
+  &::-webkit-scrollbar{width:0;height:0}
+}
+a{text-decoration:none}
+div,p,li{box-sizing:border-box}
+ul>li{list-style:none}
+button,input,textarea{outline:none}
+div,p,span,code,em,i,img,u,a,h1,h2,h3,h4,h5,h6{
+  font-family:Microsoft Yahei;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+}

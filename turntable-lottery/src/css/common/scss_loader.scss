@@ -1,0 +1,33 @@
+@import './variable.scss';
+$color-config: map-get($map: $config, $key: outputColorOptions);
+$key: map-keys($map: $color-config);
+@each $item in $key {
+  .col-#{$item} { color: map-get($map: $color-config, $key: $item)};
+  .bg-#{$item} { background: map-get($map: $color-config, $key: $item)};
+};
+
+$font-config: map-get($map: $config, $key: font);
+@each $i in $font-config {
+  .fs#{$i}{font-size:$i + px}
+}
+
+$mp-config: map-get($map: $config, $key: mp);
+$direction: map-get($map: $config, $key: direction);
+$key-dir: map-keys($map: $direction);
+@each $i in $mp-config {
+  @each $j in $key-dir {
+    @if ($j == 'all') {
+      .p-#{$i}{padding: $i+px}
+      .m-#{$i}{margin: $i+px}
+    } @else if ($j == 'x') {
+      .px-#{$i}{padding: 0 $i+px}
+      .mx-#{$i}{margin: 0 $i+px}
+    } @else if ($j == 'y') {
+      .py-#{$i}{padding:$i+px 0}
+      .my-#{$i}{margin:$i+px 0}
+    } @else {
+      .m#{$j}-#{$i}{margin-#{map-get($direction, $j)}: $i + px;}
+      .p#{$j}-#{$i}{padding-#{map-get($direction, $j)}: $i + px;}
+    }
+  }
+}

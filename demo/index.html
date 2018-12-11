@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>demo</title>
+  <style>
+    .boom-color{font-size:18px; line-height:2em; height:2em; color:#333; border:none; outline:none; box-shadow:0 0 1px 2px rgba(0, 0, 0, .6); width:300px; display:block; margin:150px auto;
+      padding:0 .5em;
+    }
+    .boom-color i{position:relative; left:.1em; top:15%; height:70%; width:1px; background:#333; display:inline-block; opacity:0;}
+    .boom-color .view{z-index:-6; border:none; outline:none; background:transparent; color:transparent; position:absolute;}
+    .boom-color i.active{opacity:1;}
+  </style>
+</head>
+
+<body>
+  <input type="text" class="boom-color" placeholder="> Enter Somethings...">
+  <script>
+    var MyInput = (function () {
+      var lib = function (el) {
+        this.node = document.querySelector(el);
+        this.install();
+      };
+
+      lib.prototype = {
+        install: function() {
+          this.creat();
+          this.addEventLister();
+        },
+        creat: function() {
+          var el = document.createElement('div');
+          el.innerHTML = '<span class="' + this.node.className + '">'+
+                            '<input class="view"/>'+
+                            '<span></span>'+
+                            '<i class="cursor"></i>'+
+                          '</span>';
+          this.node.parentNode.replaceChild(el, this.node);
+          this.node = el.firstChild;
+          // el.removeEventListener
+        },
+        addEventLister: function() {
+          this.node.addEventListener('click', this.edit, false);
+        },
+        edit: function() {
+          if (this.className.indexOf('writing') === -1) this.className += ' writing';
+          var input   = this.childNodes[0];
+          var content = this.childNodes[1];
+          var cursor  = this.childNodes[2];
+          var code = false;
+          var time = setInterval(function() {
+            if (code) cursor.className = '';
+            else cursor.className = 'active';
+            code = !code
+          }, 600);
+          
+          input.focus();
+          input.value = content.innerText;
+          // input.addEventListener('change', function() {
+          //   content.innerText = this.value;
+          // }, false);
+          function render() {
+            console.log(1);
+            content.innerText = input.value;
+          }
+          window.addEventListener('keydown', render, false);
+          
+          var _dom    = this;
+          input.addEventListener('blur', function() {
+            _dom.removeEventListener('click', lib.edit);
+            window.removeEventListener('keydown', render);
+            clearInterval(time);
+            cursor.className = '';
+          })
+        }
+      }
+
+      return lib;
+    })();
+
+    new MyInput('.boom-color');
+  </script>
+</body>
+
+</html>
